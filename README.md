@@ -1,6 +1,7 @@
 # React + Vite
 
-the link :  food-website-using-react-by-chandan-300jm6h56.vercel.app     host by vercel
+the link :  https://food-website-using-react-by-chandan.vercel.app/
+host by vercel
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
