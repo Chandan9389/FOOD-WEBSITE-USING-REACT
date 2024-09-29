@@ -11,36 +11,49 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 
- const [phone, setPhone] = useState()
 
 
-  const api = 'http://localhost:1337/api/manage-buyers';
 
+
+
+
+
+
+
+
+
+
+
+
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
+const Axios = () => {
+  const [buyers, setBuyers] = useState([]); // State to hold fetched buyers
+  const api = 'http://localhost:1337/api/manage-buyers?populate=*';
 
   useEffect(() => {
-  
     axios.get(api)
-    .then((res)=>{
-      console.log(res)
-      setPhone(res.data.data)
-      
-    })
-  
-  
-  }, [])
+      .then((res) => {
+        console.log(res);
+        setBuyers(res.data.data); // Set the fetched buyers
+      })
+      .catch((error) => {
+        console.error("Error fetching buyers:", error);
+      });
+  }, []);
 
+  return (
+    <div>
+      {buyers && buyers.map((item, index) => (
+        <div key={index}>
+          <p> {/* Display each buyer's name and email in a paragraph */}
+            {item.name} - {item.email} {/* Combine name and email in one paragraph */}
+          </p>
+        </div>
+      ))}
+    </div>
+  );
+};
 
-
-
-
-  under return   
-
-  <div>
-    
-      {phone && phone.map((item, index) => (<div className=""  key={index} >
-        <p> {/* Display each phone name and email in a paragraph */}
-          {item.name} - {item.email} {/* Combine name and email in one paragraph */}
-        </p>
-        </div> ))}
-  
-  </div>
+export default Axios;
