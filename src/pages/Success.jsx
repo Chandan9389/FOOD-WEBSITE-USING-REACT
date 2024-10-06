@@ -54,7 +54,7 @@ function Success() {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 4000); // Set loading to false after 3 seconds
+    }, 8000); // Set loading to false after 3 seconds
 
     setTimeout(() => {
       navigate("/"); 
